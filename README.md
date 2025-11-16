@@ -68,6 +68,11 @@ You can load multiple image files:
 ./vm program1.obj program2.obj
 ```
 
+Using some of the samples provided:
+```bash
+./vm samples/2048.obj
+```
+
 ## Supported Instructions
 
 ### Arithmetic & Logic

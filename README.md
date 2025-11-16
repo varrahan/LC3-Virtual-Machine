@@ -19,11 +19,11 @@ The LC-3 is a reduced instruction set computer (RISC) architecture designed for 
 ## Project Structure
 
 ```
-lc3-vm/
+vm/
 ├── Makefile
 ├── README.md
 ├── include/
-│   ├── lc3.h           # Core definitions and constants
+│   ├── architecture.h           # Core definitions and constants
 │   ├── memory.h        # Memory operations
 │   ├── terminal.h      # Terminal I/O control
 │   └── trap.h          # TRAP instruction handlers

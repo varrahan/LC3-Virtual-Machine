@@ -1,6 +1,14 @@
+# Visual studio code
 .vscode
 .vscode/*
 
+# Environment variables
 *.env
 
+# Compiled object files
 *.o
+*.obj
+
+# Exclude sample compiled object tiles
+!samples/2048.obj
+!samples/rogue.obj

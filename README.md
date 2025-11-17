@@ -151,6 +151,10 @@ Using some of the samples provided:
 - The VM starts execution at address 0x3000 by default
 - Press Ctrl+C to terminate execution
 - Terminal buffering is disabled during execution for immediate keyboard input
+- **Interrupts are disabled by default** - programs must explicitly enable them
+- Most LC-3 programs (like 2048) use **polling** for keyboard input, not interrupts
+- RTI instruction requires supervisor mode; user mode execution triggers privilege violation
+- Illegal opcodes trigger interrupt vector 0x01
 
 ## Example Programs
 

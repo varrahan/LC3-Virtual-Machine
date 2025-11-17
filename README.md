@@ -28,6 +28,9 @@ vm/
 │   ├── memory.h        # Memory operations
 │   ├── terminal.h      # Terminal I/O control
 │   └── trap.h          # TRAP instruction handlers
+├── samples/
+│   ├── 2048.obj        # 2048 game object file
+│   └── rogue.obj       # rogue game object file
 └── src/
     ├── main.c          # Main program loop
     ├── architecture.c  # Core VM utilities

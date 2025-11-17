@@ -1,7 +1,8 @@
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <signal.h>
 #include "architecture.h"
+#include "interrupt.h"
 #include "memory.h"
 #include "terminal.h"
 #include "trap.h"
@@ -27,14 +28,20 @@ int main(int argc, const char* argv[]) {
     
     signal(SIGINT, handle_interrupt);
     disable_input_buffering();
+
+    init_interrupts();
     
     reg[R_COND] = FL_ZRO;
+    reg[R_PSR] = PSR_PRIV | FL_ZRO;
 
     enum { PC_START = START_ADDR_DEFAULT };
     reg[R_PC] = PC_START;
 
     int running = 1;
     while (running) {
+
+        check_interrupts();
+        
         uint16_t instr = mem_read(reg[R_PC]++);
         uint16_t op = instr >> 12;
 
@@ -155,9 +162,30 @@ int main(int argc, const char* argv[]) {
                 running = handle_trap(instr);
                 break;
             }
-            case OP_RES:
-            case OP_RTI:
+            case OP_RTI: {
+                if (reg[R_PSR] & PSR_PRIV) {
+                    trigger_interrupt(VEC_PRIVILEGE);
+                } else {
+                    reg[R_PC] = mem_read(reg[R_R6]);
+                    reg[R_R6]++;
+                    
+                    reg[R_PSR] = mem_read(reg[R_R6]);
+                    reg[R_R6]++;
+                    reg[R_COND] = reg[R_PSR] & 0x7;
+                
+                    if (reg[R_PSR] & PSR_PRIV) {
+                        super_sp = reg[R_R6];
+                        reg[R_R6] = user_sp;
+                    }
+                }
+                break;
+            }
+            case OP_RES: {
+                trigger_interrupt(VEC_ILLEGAL_OP);
+                break;
+            }
             default:
+                trigger_interrupt(VEC_ILLEGAL_OP);
                 break;
         }
     }

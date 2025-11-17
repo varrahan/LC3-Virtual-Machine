@@ -11,10 +11,13 @@ The LC-3 is a reduced instruction set computer (RISC) architecture designed for 
 - Full LC-3 instruction set implementation
 - 65,536 memory locations (16-bit addressable)
 - 8 general-purpose registers (R0-R7)
-- Program counter (PC) and condition flags
+- Program counter (PC) and Processor Status Register (PSR)
+- Privilege mode support (supervisor/user mode)
+- Interrupt handling system with vector table
 - Memory-mapped keyboard I/O
 - TRAP routines for I/O operations
 - Proper signal handling (Ctrl+C)
+- Stack management for interrupt contexts
 
 ## Project Structure
 

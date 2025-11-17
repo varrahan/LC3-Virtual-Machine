@@ -1,8 +1,8 @@
-#include "memory.h"
-#include "architecture.h"
-#include "terminal.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "architecture.h"
+#include "memory.h"
+#include "terminal.h"
 
 // Write value to memory
 void mem_write(uint16_t address, uint16_t val) {

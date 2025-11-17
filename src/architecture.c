@@ -1,6 +1,6 @@
 #include "architecture.h"
 
-// Global memory and registers */
+// Global memory and registers
 uint16_t memory[MEMORY_MAX];
 uint16_t reg[R_COUNT];
 
@@ -16,10 +16,13 @@ uint16_t sign_extend(uint16_t x, int bit_count) {
 void update_flags(uint16_t r) {
     if (reg[r] == 0) {
         reg[R_COND] = FL_ZRO;
+        reg[R_PSR] = (reg[R_PSR] & ~0x7) | FL_ZRO;
     } else if (reg[r] >> 15) {
         reg[R_COND] = FL_NEG;
+        reg[R_PSR] = (reg[R_PSR] & ~0x7) | FL_NEG;
     } else {
         reg[R_COND] = FL_POS;
+        reg[R_PSR] = (reg[R_PSR] & ~0x7) | FL_POS;
     }
 }
 

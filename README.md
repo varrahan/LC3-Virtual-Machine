@@ -128,12 +128,17 @@ Using some of the samples provided:
 ### Registers
 - **R0-R7**: General-purpose registers
 - **PC**: Program Counter
+- **PSR**: Processor Status Register (privilege mode + condition flags)
 - **COND**: Condition flags (Positive, Zero, Negative)
 
 ### Condition Flags
 - `FL_POS` - Positive result
 - `FL_ZRO` - Zero result
 - `FL_NEG` - Negative result
+
+### Processor Status Register (PSR)
+- **Bit 15**: Privilege mode (0 = supervisor, 1 = user)
+- **Bits 2-0**: Condition codes (N, Z, P)
 
 ### Memory-Mapped Registers
 - `KBSR (0xFE00)` - Keyboard Status Register

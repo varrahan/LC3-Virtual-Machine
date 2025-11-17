@@ -1,6 +1,6 @@
-#include "trap.h"
-#include "architecture.h"
 #include <stdio.h>
+#include "architecture.h"
+#include "trap.h"
 
 // Handle TRAP instructions - returns 0 to halt, 1 to continue
 int handle_trap(uint16_t instr) {

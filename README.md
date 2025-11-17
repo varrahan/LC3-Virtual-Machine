@@ -23,13 +23,15 @@ vm/
 ├── Makefile
 ├── README.md
 ├── include/
-│   ├── architecture.h           # Core definitions and constants
+│   ├── architecture.h  # Core definitions and constants
+│   ├── interrupt.h     # Interrupt definitions
 │   ├── memory.h        # Memory operations
 │   ├── terminal.h      # Terminal I/O control
 │   └── trap.h          # TRAP instruction handlers
 └── src/
     ├── main.c          # Main program loop
     ├── architecture.c  # Core VM utilities
+    ├── interrupt.c     # Interrupt handling logic
     ├── memory.c        # Memory read/write and image loading
     ├── terminal.c      # Terminal buffering control
     └── trap.c          # TRAP instruction implementations

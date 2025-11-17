@@ -96,6 +96,12 @@ Using some of the samples provided:
 - `JMP` - Jump (includes RET)
 - `JSR/JSRR` - Jump to Subroutine
 
+### Interrupt & Exception Handling
+- `RTI` - Return from interrupt (supervisor mode only)
+- Privilege mode violations trigger interrupts
+- Illegal opcodes trigger interrupts
+- Reserved instruction handling
+
 ### TRAP Routines
 - `GETC` (0x20) - Read a character from keyboard
 - `OUT` (0x21) - Output a character
@@ -126,6 +132,7 @@ Using some of the samples provided:
 ### Memory-Mapped Registers
 - `KBSR (0xFE00)` - Keyboard Status Register
 - `KBDR (0xFE02)` - Keyboard Data Register
+- `MCR (0xFFFE)` - Machine Control Register
 
 ## Notes
 

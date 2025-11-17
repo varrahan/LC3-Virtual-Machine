@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -I./include -Wall
-SRCS = src/main.c src/architecture.c src/memory.c src/terminal.c src/trap.c
+SRCS = src/main.c src/architecture.c src/memory.c src/terminal.c src/trap.c src/interrupt.c
 OBJS = $(SRCS:.c=.o)
 TARGET = vm
 
